@@ -1,0 +1,9 @@
+#!/bin/bash
+if [[ $(pacmd list-sinks | grep -e 'index:' -e device.string -e 'name:' -e 'available' | grep '*'
+) == *"0"* ]]; then
+	pacmd set-default-sink 1
+	notify-send "Switched to Headphones"
+else
+	pacmd set-default-sink 0
+	notify-send "Switched to Speakers"
+fi
